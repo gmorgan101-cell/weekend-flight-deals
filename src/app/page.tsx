@@ -279,15 +279,20 @@ export default function Home() {
               </button>
             ) : (
               <h1 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-1.5">
-                <svg className="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                <svg className="w-6 h-6" viewBox="0 0 64 64" fill="none">
+                  {/* Cartoon aeroplane */}
+                  <ellipse cx="32" cy="38" rx="28" ry="6" fill="#93C5FD" opacity="0.3" />
+                  <path d="M8 28c0 0 6-2 14-2h8l-4-10c0 0-1-2 1-2h4l8 12h10c3 0 6 1.5 6 4s-3 4-6 4H39l-8 12h-4c-2 0-1-2-1-2l4-10h-8c-8 0-14-2-14-2l-2 4h-3l2-6-2-6h3l2 4z" fill="#3B82F6" stroke="#2563EB" strokeWidth="1.5" strokeLinejoin="round" />
+                  <circle cx="30" cy="28" r="1.5" fill="white" />
+                  <circle cx="35" cy="28" r="1.5" fill="white" />
+                  <path d="M22 28h4" stroke="white" strokeWidth="1" strokeLinecap="round" />
                 </svg>
-                Weekend Flights
+                Glyn's Flight Club
               </h1>
             )}
             <div className="flex items-center gap-2">
               <ThemeToggle />
-              <p className="text-[10px] text-gray-400 dark:text-slate-500 text-right leading-tight">
+              <p className="text-[10px] text-gray-500 dark:text-slate-400 text-right leading-tight">
                 All London airports<br />LGW LHR STN LTN LCY
               </p>
             </div>
@@ -323,7 +328,7 @@ export default function Home() {
                 £{maxPrice}
               </span>
             </div>
-            <div className="flex gap-2 text-[10px] text-gray-400 dark:text-slate-500 overflow-x-auto">
+            <div className="flex gap-2 text-[10px] text-gray-500 dark:text-slate-400 overflow-x-auto">
               <span className="shrink-0 bg-gray-50 dark:bg-slate-800 px-2 py-1 rounded-full">Thu 8pm+</span>
               <span className="shrink-0 bg-gray-50 dark:bg-slate-800 px-2 py-1 rounded-full">Fri 6pm+</span>
               <span className="shrink-0 bg-gray-50 dark:bg-slate-800 px-2 py-1 rounded-full">Sun 5pm+ return</span>
@@ -332,7 +337,7 @@ export default function Home() {
 
           {/* Empty state */}
           {selectedWeekend === null && !loading && (
-            <div className="text-center py-20 text-gray-400 dark:text-slate-500">
+            <div className="text-center py-20 text-gray-500 dark:text-slate-400">
               <svg className="w-10 h-10 mx-auto mb-3 text-gray-300 dark:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
@@ -451,7 +456,7 @@ export default function Home() {
               </h3>
 
               {loadingCity && (
-                <div className="flex items-center gap-2 text-gray-400 dark:text-slate-500 text-xs py-6 justify-center">
+                <div className="flex items-center gap-2 text-gray-500 dark:text-slate-400 text-xs py-6 justify-center">
                   <svg className="animate-spin h-3.5 w-3.5" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -461,7 +466,7 @@ export default function Home() {
               )}
 
               {!loadingCity && attractions.length === 0 && (
-                <p className="text-xs text-gray-400 dark:text-slate-500 py-4 text-center">
+                <p className="text-xs text-gray-500 dark:text-slate-400 py-4 text-center">
                   No attraction info available
                 </p>
               )}
@@ -488,7 +493,7 @@ export default function Home() {
                           <div className="flex items-center gap-1.5 mt-0.5">
                             <StarRating rating={att.rating} />
                             {att.reviews && (
-                              <span className="text-[10px] text-gray-400 dark:text-slate-500">
+                              <span className="text-[10px] text-gray-500 dark:text-slate-400">
                                 {formatReviewCount(att.reviews)}
                               </span>
                             )}
@@ -513,7 +518,7 @@ export default function Home() {
                   </h3>
 
                   {loadingFlights && (
-                    <div className="flex items-center gap-2 text-gray-400 dark:text-slate-500 text-xs py-6 justify-center">
+                    <div className="flex items-center gap-2 text-gray-500 dark:text-slate-400 text-xs py-6 justify-center">
                       <svg className="animate-spin h-3.5 w-3.5" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -523,7 +528,7 @@ export default function Home() {
                   )}
 
                   {!loadingFlights && flights.length === 0 && (
-                    <p className="text-xs text-gray-400 dark:text-slate-500 py-4 text-center">
+                    <p className="text-xs text-gray-500 dark:text-slate-400 py-4 text-center">
                       No flights match your schedule
                     </p>
                   )}
@@ -566,7 +571,7 @@ export default function Home() {
                               <span className="text-gray-500 dark:text-slate-400">{flight.departureAirport}</span>
                             </div>
                           </div>
-                          <div className="flex items-center justify-between text-[10px] text-gray-400 dark:text-slate-500">
+                          <div className="flex items-center justify-between text-[10px] text-gray-500 dark:text-slate-400">
                             <span>{flight.durationOutbound}</span>
                             <span>
                               {flight.stopovers === 0 ? "Direct" : `${flight.stopovers} stop`} · {flight.nightsInDest} nights
@@ -600,7 +605,7 @@ export default function Home() {
                   <p className="text-xs text-gray-500 dark:text-slate-400">Flights from</p>
                   <p className="text-xl font-bold text-emerald-600 dark:text-emerald-400">
                     £{view.price}
-                    <span className="text-xs font-normal text-gray-400 dark:text-slate-500 ml-1">return</span>
+                    <span className="text-xs font-normal text-gray-500 dark:text-slate-400 ml-1">return</span>
                   </p>
                 </div>
                 <button

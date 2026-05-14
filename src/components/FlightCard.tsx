@@ -26,7 +26,7 @@ export default function FlightCard({ flight }: { flight: FlightDeal }) {
           <span className="text-xl font-bold text-emerald-600 dark:text-emerald-400">
             £{flight.price}
           </span>
-          <span className="text-[10px] text-gray-400 dark:text-slate-500 block">return</span>
+          <span className="text-[10px] text-gray-500 dark:text-slate-400 block">return</span>
         </div>
       </div>
 
@@ -36,7 +36,7 @@ export default function FlightCard({ flight }: { flight: FlightDeal }) {
         <div className="flex items-start justify-between">
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="text-[10px] font-semibold text-gray-400 dark:text-slate-500 uppercase">Out</span>
+              <span className="text-[10px] font-semibold text-gray-500 dark:text-slate-400 uppercase">Out</span>
               <span className="text-[10px] bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-1.5 py-0.5 rounded font-semibold">
                 {flight.departureDay} {flight.departureTime}
               </span>
@@ -47,21 +47,21 @@ export default function FlightCard({ flight }: { flight: FlightDeal }) {
           </div>
           <div className="text-right">
             <p className="text-xs text-gray-900 dark:text-white font-medium">{flight.departureDate}</p>
-            <p className="text-[10px] text-gray-400 dark:text-slate-500">{flight.durationOutbound}</p>
+            <p className="text-[10px] text-gray-500 dark:text-slate-400">{flight.durationOutbound}</p>
           </div>
         </div>
 
         {/* Return */}
         <div className="flex items-start justify-between">
           <div>
-            <span className="text-[10px] font-semibold text-gray-400 dark:text-slate-500 uppercase">Ret</span>
+            <span className="text-[10px] font-semibold text-gray-500 dark:text-slate-400 uppercase">Ret</span>
             <p className="text-xs text-gray-600 dark:text-slate-400 mt-0.5">
               {flight.arrivalAirport}
             </p>
           </div>
           <div className="text-right">
             <p className="text-xs text-gray-900 dark:text-white font-medium">{flight.returnDate}</p>
-            <p className="text-[10px] text-gray-400 dark:text-slate-500">{flight.durationReturn}</p>
+            <p className="text-[10px] text-gray-500 dark:text-slate-400">{flight.durationReturn}</p>
           </div>
         </div>
       </div>

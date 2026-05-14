@@ -8,7 +8,7 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Weekend Flight Deals",
+  title: "Glyn's Flight Club",
   description: "Cheap long weekend flights from London airports",
 };
 
