@@ -64,9 +64,11 @@ function isBankHolidayMonday(dateStr: string): boolean {
   return d.getDay() === 1 && bankHolidays.has(dateStr);
 }
 
-function getUpcomingWeekends(weeksAhead: number = 8): Weekend[] {
+function getUpcomingWeekends(): Weekend[] {
   const weekends: Weekend[] = [];
   const now = new Date();
+  const endOfYear = new Date(now.getFullYear(), 11, 31);
+  const weeksAhead = Math.ceil((endOfYear.getTime() - now.getTime()) / (7 * 24 * 60 * 60 * 1000)) + 1;
 
   for (let i = 1; i <= weeksAhead; i++) {
     const thursday = new Date(now);
@@ -135,7 +137,7 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export default function Home() {
-  const [weekends] = useState(() => getUpcomingWeekends(12));
+  const [weekends] = useState(() => getUpcomingWeekends());
   const [selectedWeekend, setSelectedWeekend] = useState<number | null>(null);
   const [maxPrice, setMaxPrice] = useState(150);
   const [sortMode, setSortMode] = useState<SortMode>("price");
