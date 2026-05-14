@@ -150,6 +150,7 @@ export default function Home() {
   const [loadingCity, setLoadingCity] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showFlights, setShowFlights] = useState(false);
+  const [selectedAttraction, setSelectedAttraction] = useState<Attraction | null>(null);
 
   const weekend = selectedWeekend !== null ? weekends[selectedWeekend] : null;
   const searchDepartDate = weekend?.fridayDate;
@@ -166,6 +167,7 @@ export default function Home() {
     setFlights([]);
     setAttractions([]);
     setShowFlights(false);
+    setSelectedAttraction(null);
 
     try {
       const params = new URLSearchParams({
@@ -205,6 +207,7 @@ export default function Home() {
       setFlights([]);
       setAttractions([]);
       setShowFlights(false);
+      setSelectedAttraction(null);
       setError(null);
 
       // Load TripAdvisor attractions and flights in parallel
@@ -473,12 +476,13 @@ export default function Home() {
                 </p>
               )}
 
-              {!loadingCity && attractions.length > 0 && (
+              {!loadingCity && attractions.length > 0 && !selectedAttraction && (
                 <div className="space-y-2.5">
                   {attractions.map((att, i) => (
-                    <div
+                    <button
                       key={i}
-                      className="flex gap-3 bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700 p-2.5 overflow-hidden"
+                      onClick={() => setSelectedAttraction(att)}
+                      className="flex gap-3 bg-white dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700 p-2.5 overflow-hidden w-full text-left active:scale-[0.98] transition-transform"
                     >
                       {att.thumbnail && (
                         <img
@@ -507,8 +511,60 @@ export default function Home() {
                           </p>
                         )}
                       </div>
-                    </div>
+                      <svg className="w-4 h-4 text-gray-400 dark:text-slate-500 shrink-0 self-center" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
                   ))}
+                </div>
+              )}
+
+              {/* Attraction detail view */}
+              {selectedAttraction && (
+                <div className="space-y-4">
+                  <button
+                    onClick={() => setSelectedAttraction(null)}
+                    className="flex items-center gap-1 text-sm text-blue-600 dark:text-blue-400 font-medium active:text-blue-800 dark:active:text-blue-300"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back to attractions
+                  </button>
+
+                  {selectedAttraction.thumbnail && (
+                    <div className="rounded-xl overflow-hidden">
+                      <img
+                        src={selectedAttraction.thumbnail}
+                        alt={selectedAttraction.title}
+                        className="w-full h-52 object-cover"
+                      />
+                    </div>
+                  )}
+
+                  <div className="space-y-2">
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white">
+                      {selectedAttraction.title}
+                    </h4>
+                    {selectedAttraction.rating && (
+                      <div className="flex items-center gap-2">
+                        <StarRating rating={selectedAttraction.rating} />
+                        <span className="text-sm font-medium text-gray-700 dark:text-slate-300">
+                          {selectedAttraction.rating}
+                        </span>
+                        {selectedAttraction.reviews && (
+                          <span className="text-xs text-gray-500 dark:text-slate-400">
+                            ({formatReviewCount(selectedAttraction.reviews)} reviews)
+                          </span>
+                        )}
+                      </div>
+                    )}
+                    {selectedAttraction.description && (
+                      <p className="text-sm text-gray-600 dark:text-slate-300 leading-relaxed">
+                        {selectedAttraction.description}
+                      </p>
+                    )}
+                  </div>
                 </div>
               )}
 
