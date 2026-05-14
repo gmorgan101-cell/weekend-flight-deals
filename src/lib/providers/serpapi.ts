@@ -107,6 +107,7 @@ export async function searchFlightsForCity(params: {
     type: "1", // round trip
     hl: "en",
     gl: "uk",
+    return_times: "17,23",
     api_key: getApiKey(),
   });
 
