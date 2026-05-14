@@ -586,9 +586,14 @@ export default function Home() {
                   )}
 
                   {!loadingFlights && flights.length === 0 && (
-                    <p className="text-xs text-gray-500 dark:text-slate-400 py-4 text-center">
-                      No flights match your schedule
-                    </p>
+                    <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-4 text-center space-y-1.5">
+                      <p className="text-sm font-medium text-amber-800 dark:text-amber-300">
+                        No flights match your time preferences
+                      </p>
+                      <p className="text-xs text-amber-700 dark:text-amber-400 leading-relaxed">
+                        Flights exist to this destination but none depart Thu after 8pm / Fri after 6pm with a return after 5pm. Try a different weekend.
+                      </p>
+                    </div>
                   )}
 
                   {!loadingFlights &&
