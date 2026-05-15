@@ -319,6 +319,7 @@ export const kiwiProvider: FlightProvider = {
           arrivalAirport: out.airportTo,
           departureDay:
             out.depDay === 4 ? "Thu" : out.depDay === 5 ? "Fri" : "—",
+          arrivalTime: "",
           provider: "Kiwi",
         });
       }

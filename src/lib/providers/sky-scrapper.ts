@@ -175,6 +175,7 @@ export const skyScrapperProvider: FlightProvider = {
               : depDay === 5
                 ? "Fri"
                 : formatDate(out.departure).split(",")[0],
+          arrivalTime: "",
           provider: "Sky Scrapper",
         };
       })

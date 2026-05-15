@@ -625,20 +625,44 @@ export default function Home() {
                         </div>
 
                         {/* Details */}
-                        <div className="px-3 py-2.5 space-y-1.5">
-                          <div className="flex items-center justify-between text-xs">
-                            <div className="flex items-center gap-1.5">
-                              <span className="bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-1.5 py-0.5 rounded font-semibold text-[10px]">
-                                {flight.departureDay} {flight.departureTime}
+                        <div className="px-3 py-2.5 space-y-2">
+                          {/* Outbound */}
+                          <div>
+                            <span className="text-[10px] font-semibold text-gray-500 dark:text-slate-400 uppercase">Outbound</span>
+                            <div className="flex items-center justify-between mt-0.5">
+                              <div className="flex items-center gap-1.5">
+                                <span className="bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-1.5 py-0.5 rounded font-semibold text-[10px]">
+                                  {flight.departureDay} {flight.departureTime}
+                                </span>
+                                <span className="text-[10px] text-gray-400 dark:text-slate-500">→</span>
+                                {flight.arrivalTime && (
+                                  <span className="text-[10px] font-medium text-gray-700 dark:text-slate-300">
+                                    {flight.arrivalTime}
+                                  </span>
+                                )}
+                              </div>
+                              <span className="text-[10px] text-gray-500 dark:text-slate-400">
+                                {flight.durationOutbound}
                               </span>
-                              <span className="text-gray-500 dark:text-slate-400">{flight.departureAirport}</span>
+                            </div>
+                            <div className="flex items-center justify-between mt-0.5 text-[10px] text-gray-500 dark:text-slate-400">
+                              <span>{flight.departureAirport}</span>
+                              <span>
+                                {flight.stopovers === 0 ? "Direct" : `${flight.stopovers} stop`}
+                              </span>
                             </div>
                           </div>
-                          <div className="flex items-center justify-between text-[10px] text-gray-500 dark:text-slate-400">
-                            <span>{flight.durationOutbound}</span>
-                            <span>
-                              {flight.stopovers === 0 ? "Direct" : `${flight.stopovers} stop`} · {flight.nightsInDest} nights
-                            </span>
+                          {/* Return */}
+                          <div>
+                            <span className="text-[10px] font-semibold text-gray-500 dark:text-slate-400 uppercase">Return</span>
+                            <div className="flex items-center justify-between mt-0.5">
+                              <span className="bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-1.5 py-0.5 rounded font-semibold text-[10px]">
+                                {weekend?.isBankHoliday ? "Mon" : "Sun"} 17:00+
+                              </span>
+                              <span className="text-[10px] text-gray-500 dark:text-slate-400">
+                                {flight.nightsInDest} nights
+                              </span>
+                            </div>
                           </div>
                         </div>
 

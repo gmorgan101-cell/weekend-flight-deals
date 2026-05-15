@@ -190,6 +190,7 @@ export async function searchFlightsForCity(params: {
       returnDate: formatDate(params.returnDate),
       departureTime: depTime ? depTime.slice(11, 16) : "",
       returnTime: "",
+      arrivalTime: arrTime ? arrTime.slice(11, 16) : "",
       airline: firstLeg.airline || "Unknown",
       airlineLogo: firstLeg.airline_logo || flight.airline_logo || "",
       bookingLink,

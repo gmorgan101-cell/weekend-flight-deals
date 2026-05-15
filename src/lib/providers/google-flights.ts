@@ -206,6 +206,7 @@ export const googleFlightsProvider: FlightProvider = {
             : depDay === 5
               ? "Fri"
               : "—",
+        arrivalTime: "",
         provider: "Google Flights",
       });
     }

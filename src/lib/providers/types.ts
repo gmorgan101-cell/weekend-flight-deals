@@ -11,6 +11,7 @@ export interface FlightDeal {
   returnDate: string;
   departureTime: string;
   returnTime: string;
+  arrivalTime: string;
   airline: string;
   airlineLogo: string;
   bookingLink: string;
