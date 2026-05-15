@@ -264,6 +264,10 @@ export default function Home() {
     return a.price - b.price;
   });
 
+  const cheapestFlightPrice = flights.length > 0
+    ? Math.min(...flights.map((f) => f.price))
+    : null;
+
   const isCity = view.level === "city";
 
   return (
@@ -689,9 +693,11 @@ export default function Home() {
             <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 z-20">
               <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-500 dark:text-slate-400">Flights from</p>
+                  <p className="text-xs text-gray-500 dark:text-slate-400">
+                    {loadingFlights ? "Checking flights..." : cheapestFlightPrice ? "Cheapest matching flight" : "Flights from"}
+                  </p>
                   <p className="text-xl font-bold text-emerald-600 dark:text-emerald-400">
-                    £{view.price}
+                    £{cheapestFlightPrice ?? view.price}
                     <span className="text-xs font-normal text-gray-500 dark:text-slate-400 ml-1">return</span>
                   </p>
                 </div>
